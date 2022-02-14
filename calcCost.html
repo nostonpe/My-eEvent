@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My-eEvent</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <header id="home">
+        <!-- NAVBAR-->
+        <nav id="nav">
+            <div class="nav-center">
+                <!-- nav header-->
+                <div class="nav-header">
+                    <h2>My-eEvent</h2>
+                    <button class="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+                </div>
+                <!-- links -->
+                <ul class="links">
+                    <!-- single link  -->
+
+                    <!-- <li>
+                    <a href="index.html"><i class="fas fa-home fa-sm fa-nav"></i>Αρχική</a>
+                </li> -->
+
+                    <!--  end of single link  -->
+                </ul>
+                <!-- social media -->
+                <ul class="social-icons">
+                    <!-- single social media icon  -->
+
+                    <!-- <li>
+                    <a href="https://www.facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li> -->
+
+                    <!--  end of single social media icon  -->
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END OF NAVBAR -->
+    <!-- CONTAINER  -->
+    <section class="container">
+        <div class="container-header">
+            <img src="./images/main.jpeg" alt="Main Image" class="main-img">
+        </div>
+
+        <section class="section section-center">
+            <!-- PRICE LIST -->
+            <section class="section price-list">
+                <div class="price-list-text">
+                    <h3 class="section-titles">Τιμοκατάλογος</h3>
+                    <div class="main-underline"></div>
+                    <p>*Το συνολικό κόστος του συνεδρίου εξαρτάται απο το <span class="price-list-span">πλήθος των παρευρισκόμενων</span>, το<span class="price-list-span"> πλήθος του προσωπικού</span> που απαιτείται για την εξυπηρέτηση του κοινού,καθώς και
+                        το <span class="price-list-span">πλήθος των ημερών</span> που θα πραγματοποιηθεί το εκάστοτε συνέδριο ,σύμφωνα με τον παρακάτω πίνακα</p>
+                </div>
+                <div class="table-container">
+                    <table class="table">
+                        <tr>
+                            <th class="colored">Πλήθος Κοινού</th>
+                            <th class="colored">Κόστος Προσωπικού<br>(ανά εργαζόμενο)</th>
+                            <th class="colored">Πάγιο Κόστος ανά ημέρα</th>
+                            <th class="colored">Προμήθεια ανά άτομο</th>
+                        </tr>
+                        <tbody class="tbody">
+                            <!-- single row-->
+                            <!--     <tr>
+                                <th class="colored"> <=500 </th>
+                                <td>10&euro/ώρα</td>
+                                <td>400&euro;/ημέρα</td>
+                                <td>0,5&euro;</td>
+                            </tr>
+                        -->
+                            <!-- end of single row-->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- END OF PRICE LIST-->
+            <!-- CALCULATE COST -->
+            <section class="section calculate-cost">
+                <h3>υπολογισμός κόστους</h3>
+                <div class="main-underline"></div>
+                <p class="cost-info">Για να υπολογίσετε το κόστος του συνεδρίου σας συμπληρώστε το πλήθος των παρευρισκόμενων, το πλήθος του προσωπικού που θα χρειαστεί, και τις ημέρες διάρκειας του συνεδρίου.</p>
+                <!-- form -->
+                <div class="form-container">
+                    <form action="#" method="POST" class="cost-form">
+                        <label for="crowd">Πλήθος παρευρισκόμενων: </label>
+                        <input type="text" id="crowd" name="crowd" class="cost-inpts"><br>
+                        <label for="staffNumber">Πλήθος προσωπικού: </label>
+                        <input type="text" id="staffNumber" name="staffNumber" class="cost-inpts"><br>
+                        <label for="eventDays">Ημέρες διάρκειας συνεδρίου: </label>
+                        <input type="text" id="eventDays" name="eventDays" class="cost-inpts"><br>
+                        <button type="button" class="btn btnCost">υπολογισμός</button>
+                    </form>
+                    <!-- end of form-->
+                </div>
+                <div class="final-cost-container">
+                    <!-- <p id="cost-result">Το κόστος του συνεδρίου σας είναι :<span id="cost-value">10,31&euro;</span></p> -->
+                </div>
+            </section>
+            <!-- END OF CALCULATE COST-->
+        </section>
+    </section>
+    <!-- END OF CONTAINER-->
+
+    <!-- DYNAMIC CONTENT-->
+    <div class="modal">
+        <button class="close-btn">
+    <i class="fas fa-times"></i>
+</button>
+        <div class="modal-content">
+            <article class="modal-cost-container">
+                <!-- <p id="modal-result">to kostos tis apostolis sas einai :<br> <span>lala</span></p> -->
+            </article>
+            <article class="modal-imgOffer-container">
+                <img src="./images/offer.jpeg" class="offerImg" alt="offer img">
+            </article>
+            <article class="modal-offer-container">
+                <h3>Προσφορά για δωρεάν προμήθεια !</h3>
+                <h4 class="giveaway">Η Προσφορά λήγει την Κυριακή, ...</h4>
+                <div class="deadline">
+                    <div class="deadline-format">
+                        <!-- days-->
+                        <div>
+                            <h4 class="days">34</h4>
+                            <span>days</span>
+                        </div>
+                    </div>
+                    <!-- end of days-->
+
+                    <!-- hours-->
+                    <div class="deadline-format">
+                        <div>
+                            <h4 class="hours">34</h4>
+                            <span>hours</span>
+                        </div>
+                    </div>
+                    <!-- end of hours-->
+
+                    <!-- minutes-->
+                    <div class="deadline-format">
+                        <div>
+                            <h4 class="mins">34</h4>
+                            <span>mins</span>
+                        </div>
+                    </div>
+                    <!-- end of minutes-->
+
+                    <!-- seconds-->
+                    <div class="deadline-format">
+                        <div>
+                            <h4 class="seconds">34</h4>
+                            <span>seconds</span>
+                        </div>
+                    </div>
+                    <!-- end of seconds-->
+                </div>
+                <button type="button" class="btn offer-btn">
+                    Accept
+                </button>
+            </article>
+        </div>
+    </div>
+    <!-- END OF DYNAMIC CONTENT -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info-newsletter">
+                <h3>Χρήστες newsletter</h3>
+                <a href="newsletterUsersPage.html" class="footerBtn" target="_blank">Πατήστε εδώ για να οδηγηθείτε σε ειδική σελίδα προβολής όλων των χρηστών newsletter</a>
+            </div>
+            <div class="footer-info-copyright">
+                <p>e14154 &copy; <span id="date"></span>. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!-- END OF FOOTER-->
+    <a class="scroll-link top-link" href="#home">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <script type="module" src="calcCost.js"></script>
+</body>
+
+</html>

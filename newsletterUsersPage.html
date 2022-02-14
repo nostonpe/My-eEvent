@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My-eEvent</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <header id="home">
+        <!-- NAVBAR-->
+        <nav id="nav">
+            <div class="nav-center">
+                <!-- nav header-->
+                <div class="nav-header">
+                    <h2>My-eEvent</h2>
+                    <button class="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <!-- links -->
+                <ul class="links">
+                    <!-- single link  -->
+
+                    <li>
+                        <a href="index.html"><i class="fas fa-home fa-sm fa-nav"></i>Αρχική</a>
+                    </li>
+                    <li>
+                        <!--  end of single link  -->
+                        <a href="about.html"><i class="fas fa-book-open fa-sm fa-nav"></i>Η εταιρεία μας</a>
+                    </li>
+                    <li>
+                        <a href="calcCost.html"><i class="fas fa-calculator fa-sm fa-nav"></i>υπολογισμός κόστους</a>
+                    </li>
+                    <li>
+                        <a href="contact.html"><i class="fas fa-inbox fa-sm fa-nav"></i>επικοινωνία</a>
+                    </li>
+                    <li>
+                        <a href="newsletterSignUp.html"><i class="fas fa-user-plus fa-sm fa-nav"></i>Εγγραφή στο
+                            newsLetter</a>
+                    </li>
+
+
+                </ul>
+                <!-- social media -->
+                <ul class="social-icons">
+                    <!-- single social media icon  -->
+
+                    <li>
+                        <a href="https://www.facebook.com">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <!--  end of single social media icon  -->
+                    <li>
+                        <a href="https://www.twitter.com">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.sketch.com">
+                            <i class="fab fa-sketch"></i>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END OF NAVBAR -->
+    <!-- CONTAINER  -->
+    <section class="container">
+        <div class="container-header">
+            <img src="./images/main.jpeg" alt="Main Image" class="main-img">
+        </div>
+
+        <section class="section section-center">
+            <div class="section view-users-btn-container">
+                <p>Πατήστε το κουμπί παρακάτω για να δείτε τους χρήστες newsletter</p>
+                <button class="btn viewUsersBtn">Εμφάνιση χρηστών newsletter</button>
+            </div>
+            </div>
+            <!-- USERS TABLE-->
+            <div class="users-table-container">
+                <table class="users-table">
+                    <tr>
+                        <th>Username</th>
+                        <th>Όνομα</th>
+                        <th>Email</th>
+
+                    </tr>
+                    <tbody id="data">
+                        <!-- single row -->
+
+                        <!-- <tr>
+                            <td>random Username</td>
+                            <td>random Name</td>
+                            <td>random Email</td>
+                        </tr> -->
+
+                        <!-- end of single row -->
+
+
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- END OF USERS TABLE-->
+        </section>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info-newsletter">
+                <h3>Χρήστες newsletter</h3>
+                <a href="newsletterUsersPage.html" class="footerBtn" target="_blank">Πατήστε εδώ για να οδηγηθείτε σε
+                    ειδική σελίδα προβολής όλων των χρηστών newsletter</a>
+            </div>
+            <div class="footer-info-copyright">
+                <p>e14154 &copy; <span id="date"></span>. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!-- END OF FOOTER-->
+    <a class="scroll-link top-link" href="#home">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+
+
+
+
+
+
+
+    <!-- SCRIPT FOR DISPLAY DATA ON BUTTON CLICK -->
+    <script>
+        // call ajax
+        const ajax = new XMLHttpRequest();
+        const method = "GET";
+        const url = "usersData.php";
+        const asynchronous = true;
+
+        ajax.open(method, url, asynchronous);
+        // sending ajax request
+        ajax.send();
+
+        //receiving response from data.php
+        ajax.onreadystatechange = function() {
+            const viewUsersBtn = document.querySelector('.viewUsersBtn');
+            if (this.readyState == 4 && this.status == 200) {
+                viewUsersBtn.addEventListener('click', () => {
+                    // converting JSON back to array
+                    const data = JSON.parse(this.responseText);
+                    console.log(data); // for debugging
+
+                    // html value for <tbody>
+                    let html = "";
+                    //looping through the data
+                    if (data.length > 0) {
+                        for (let i = 0; i < data.length; i++) {
+                            const userName = data[i].username;
+                            const name = data[i].name;
+                            const email = data[i].email;
+
+                            //appending at html
+                            html += `<tr>
+                                       <td> ${userName}</td>
+                                       <td> ${name}</td>
+                                       <td> ${email}</td>
+                                    </tr>`
+
+
+                        }
+
+                        // replacing the <tbody> of <table>
+                        document.getElementById("data").innerHTML = html;
+                    } else {
+                        alert('Δεν υπάρχουν εγγεγραμένοι χρήστες στο newsletter!');
+                    }
+                })
+            };
+        }
+    </script>
+    <!-- END OF SCRIPT FOR DISPLAY DATA ON BUTTON CLICK -->
+
+
+
+
+
+
+
+    <!--  TOGGLE NAVBAR ON MOBILE SCREEN  -->
+    <script>
+        const toggleBtn = document.querySelector(".nav-toggle");
+        toggleBtn.addEventListener("click", () => {
+            navToggle();
+        });
+
+        function navToggle() {
+            const links = document.querySelector(".links");
+            links.classList.toggle("show-links");
+        }
+    </script>
+    <!--   END  OF  TOGGLE NAVBAR-->
+
+
+
+
+
+
+
+    <!-- FOOTER DATE SCRIPT-->
+    <script>
+        const date = document.getElementById("date");
+        window.addEventListener('DOMContentLoaded', () => {
+            footerDate();
+        })
+
+        const footerDate = () => {
+            date.innerHTML = new Date().getFullYear();
+        }
+    </script>
+    <!-- END OF FOOTER DATE SCRIPT-->
+
+
+
+
+
+
+
+    <!------ FIXED NAV & TOP ARROW ON SCROLL (all pages)   -->
+
+    <script>
+        const sectionCenter = document.querySelector(".section-center");
+        const navbar = document.getElementById("nav");
+        const topLink = document.querySelector(".top-link");
+        const containerHeader = document.querySelector(".container-header");
+
+        window.addEventListener("scroll", function() {
+            fixedNavArrow();
+        });
+
+        const fixedNavArrow = () => {
+            const scrollHeight = window.pageYOffset;
+            const navHeight = navbar.getBoundingClientRect().height;
+            const contImg = containerHeader.getBoundingClientRect().height;
+            const TotalWantedHeight = navHeight + contImg;
+
+            if (scrollHeight > TotalWantedHeight) {
+                navbar.classList.add("fixed-nav");
+            } else {
+                navbar.classList.remove("fixed-nav");
+            }
+            // setup back to top link
+
+            if (scrollHeight > TotalWantedHeight) {
+                topLink.classList.add("show-top-link");
+            } else {
+                topLink.classList.remove("show-top-link");
+            }
+            // set margin for section-center so navbar dont appear above content
+            if (topLink.classList.contains("show-top-link")) {
+                if (window.innerWidth > 992) sectionCenter.style.marginTop = "7rem";
+                else if ((window.innerWidth > 768) & (window.innerWidth < 992)) {
+                    sectionCenter.style.marginTop = "21rem";
+                } else if (window.innerWidth < 768) {
+                    sectionCenter.style.marginTop = "8rem";
+                }
+            } else {
+                sectionCenter.style.marginTop = "0";
+            }
+        }
+    </script>
+    <!-- END OF FIXED NAV & TOP ARROW ON SCROLL -->
+
+</body>
+
+</html>

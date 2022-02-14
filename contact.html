@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My-eEvent</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            background-color: white;
+        }
+        /* CONTACT FORM STYLES */
+        
+        .form-container {
+            margin-top: 3.875rem;
+        }
+        
+        .form-container h2 {
+            font-family: ruboto, 'sans serif';
+        }
+        
+        .contactFormInpts,
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 0.375rem;
+            border: 1px solid lightgray;
+            font-size: 1.2rem;
+            font-family: "Roboto", sans-serif;
+            background-color: rgb(226, 209, 209);
+            color: black;
+            border-radius: 0.25rem;
+            transition: 0.5s;
+            outline: none;
+        }
+        
+        .contactFormInpts {
+            height: 1.75rem;
+        }
+        
+        textarea {
+            min-height: 4rem;
+        }
+        
+        .contactFormInpts:hover,
+        textarea:hover {
+            background-color: white;
+        }
+        
+        .contactFormInpts:focus,
+        textarea:focus {
+            border-color: rgb(221, 178, 98);
+        }
+        
+        .form-group label {
+            text-transform: capitalize;
+            width: 5rem;
+            padding: 0.2rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .form-group-row {
+            margin-bottom: 1rem;
+            position: relative;
+            display: grid;
+        }
+        
+        .form-group-row small {
+            font-size: 0.75rem;
+            background: transparent;
+            color: #e74c3c;
+            position: absolute;
+            left: 0;
+            bottom: -1rem;
+            visibility: hidden;
+        }
+        
+        .form-group-row.error small {
+            visibility: visible;
+        }
+        /* error color */
+        
+        .error {
+            border-color: #e74c3c;
+        }
+        
+        .success {
+            border-color: #2ecc71;
+        }
+        
+        .form-group-row.error input {
+            border-color: #e74c3c;
+        }
+        /* sucess color */
+        
+        .form-group-row.success input {
+            border-color: #2ecc71;
+        }
+        
+        .btnFormContact {
+            text-transform: uppercase;
+            background: transparent;
+            color: hsl(273, 74%, 21%);
+            padding: 0.375rem 0.75rem;
+            letter-spacing: 0.05rem;
+            transition: all 0.5s linear;
+            font-size: 1rem;
+            border: 2px solid lightgray;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 0.25rem;
+            margin: 1rem 0 0 18rem;
+            max-width: 10rem;
+        }
+        
+        .btnFormContact:hover {
+            color: black;
+            background-color: white;
+            border: 1px solid black;
+        }
+        
+        @media screen and (min-width: 768px) {
+            .contactFormInpts,
+            textarea {
+                max-width: 24rem;
+            }
+            .form-container {
+                margin-top: 0;
+            }
+            .form-container h2 {
+                font-size: 2.1rem;
+                text-align: left;
+            }
+            .info-titles-container {
+                min-height: 6.5rem;
+                margin-top: 2rem;
+                padding-top: 3rem;
+            }
+        }
+        
+        @media screen and (min-width: 1080px) {
+            .form-group {
+                margin-top: 2rem;
+            }
+            .form-group-row {
+                grid-template-columns: 0.1fr 1fr;
+            }
+            .form-group-row label {
+                text-align: right;
+            }
+            .form-group-row small {
+                left: 5rem;
+                bottom: -1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="home">
+        <!-- NAVBAR-->
+        <nav id="nav">
+            <div class="nav-center">
+                <!-- nav header-->
+                <div class="nav-header">
+                    <h2>My-eEvent</h2>
+                    <button class="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <!-- links -->
+                <ul class="links">
+                    <!-- single link  -->
+
+                    <li>
+                        <a href="index.html"><i class="fas fa-home fa-sm fa-nav"></i>Αρχική</a>
+                    </li>
+                    <li>
+                        <!--  end of single link  -->
+                        <a href="about.html"><i class="fas fa-book-open fa-sm fa-nav"></i>Η εταιρεία μας</a>
+                    </li>
+                    <li>
+                        <a href="calcCost.html"><i class="fas fa-calculator fa-sm fa-nav"></i>υπολογισμός κόστους</a>
+                    </li>
+                    <li>
+                        <a href="contact.html"><i class="fas fa-inbox fa-sm fa-nav"></i>επικοινωνία</a>
+                    </li>
+                    <li>
+                        <a href="newsletterSignUp.html"><i class="fas fa-user-plus fa-sm fa-nav"></i>Εγγραφή στο
+                            newsLetter</a>
+                    </li>
+
+
+                </ul>
+                <!-- social media -->
+                <ul class="social-icons">
+                    <!-- single social media icon  -->
+
+                    <li>
+                        <a href="https://www.facebook.com">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <!--  end of single social media icon  -->
+                    <li>
+                        <a href="https://www.twitter.com">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.sketch.com">
+                            <i class="fab fa-sketch"></i>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END OF NAVBAR -->
+    <!-- CONTAINER  -->
+    <section class="container">
+        <div class="container-header">
+            <div class="preloader">
+                <img src="./images/preloader.gif" alt="preloader" />
+            </div>
+            <div style="width: 100%"><iframe width="100%" height="300px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=%CE%B1%CE%B3%CE%AF%CE%BF%CF%85%20%CE%B1%CE%B8%CE%B1%CE%BD%CE%B1%CF%83%CE%AF%CE%BF%CF%85%2029,%20%CE%BC%CE%B1%CF%81%CE%BF%CF%8D%CF%83%CE%B9,+(my-eEvent)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                <a href="https://www.maps.ie/draw-radius-circle-map/">Easy radius map</a>
+            </div>
+        </div>
+
+        <section class="section section-center">
+            <!-- CONTACT -->
+            <section class="contact-container">
+                <!-- contact info -->
+                <div class="section info-container">
+                    <div class="info-titles-container">
+                        <h2>στοιχεία<br>επικοινωνίας</h2>
+                    </div>
+                    <div class="contact-information">
+                        <!-- single row -->
+                        <div class="contact-row address">
+                            <div class="address-title">
+                                <p>Διεύθυνση: </p>
+                            </div>
+                            <div class="address-info">
+                                <p>αγίου αθανασίου 29, μαρούσι, 15125</p>
+                            </div>
+                        </div>
+                        <!-- end of single row -->
+                        <!-- single row -->
+                        <div class="contact-row phone">
+                            <div class="phone-title">
+                                <p>τηλέφωνο: </p>
+                            </div>
+                            <div class="phone-info">
+                                <p><a href="tel:+30 210 6073 000" style="color:white">+30 210 6073 000</a></p>
+                            </div>
+                        </div>
+                        <!-- end of single row -->
+                        <!-- single row -->
+                        <div class="contact-row support">
+                            <div class="support-title">
+                                <p>τηλεφωνική εξυπηρέτηση: </p>
+                            </div>
+                            <div class="support-info">
+                                <p>1120(από σταθερό με αστική χρέωση)</p>
+                            </div>
+                        </div>
+                        <!-- end of single row -->
+                        <!-- single row -->
+                        <div class="contact-row email">
+                            <div class="email-title">
+                                <p>email</p>
+                            </div>
+                            <div class="email-info">
+                                <p><a href="mailto:info@my-Ecourier.gr" style="color:white">info@my-Ecourier.gr</a></p>
+                            </div>
+                        </div>
+                        <!-- end of single row -->
+
+                    </div>
+                </div>
+                <!--end of contact info -->
+                <!-- form-container -->
+                <div class="section form-container">
+                    <div class="info-titles-container">
+                        <h2>φόρμα Επικοινωνίας</h2>
+                    </div>
+                    <form id="contact-form" method="POST">
+                        <div class="form-group">
+                            <div class="form-group-inputs-container">
+                                <!-- single input  -->
+                                <div class="form-group-row">
+                                    <label for="name">Όνομα: </label>
+                                    <input type="text" id="name" name="name" class="contactFormInpts">
+                                    <small>Error message</small>
+                                </div>
+                                <!-- end of single input-->
+                                <div class="form-group-row">
+                                    <label for="email">Email: </label>
+                                    <input type="text" id="email" name="email" class="contactFormInpts">
+                                    <small>Error message</small>
+                                </div>
+                                <div class="form-group-row">
+                                    <label for="subject">Θέμα: </label>
+                                    <input type="text" id="subject" name="subject" class="contactFormInpts">
+                                    <small>Error message</small>
+                                </div>
+                            </div>
+                            <div class="form-group-row">
+                                <label for="message">μήνυμα: </label>
+                                <textarea id="message" class="contactFormInpts" name="message" rows="4" cols="50"></textarea>
+                                <small>Error message</small>
+                            </div>
+                            <div class="form-group-row">
+                                <input type="submit" id="sendMsgBtn" class="btnFormContact" value="Αποστολή">
+                            </div>
+                    </form>
+                    </div>
+                    <!-- end of form-container -->
+            </section>
+        </section>
+    </section>
+    <!-- END OF CONTAINER-->
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info-newsletter">
+                <h3>Χρήστες newsletter</h3>
+                <a href="newsletterUsersPage.html" class="footerBtn" target="_blank">Πατήστε εδώ για να οδηγηθείτε σε
+                    ειδική σελίδα προβολής όλων των χρηστών newsletter</a>
+            </div>
+            <div class="footer-info-copyright">
+                <p>e14154 &copy; <span id="date"></span>. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!-- END OF FOOTER-->
+    <a class="scroll-link top-link" href="#home">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+
+
+    <!--  TOGGLE    ( all pages )   -->
+    <script>
+        const toggleBtn = document.querySelector(".nav-toggle");
+        toggleBtn.addEventListener("click", () => {
+            navToggle();
+        });
+
+        function navToggle() {
+            const links = document.querySelector(".links");
+            links.classList.toggle("show-links");
+        }
+    </script>
+    <!--   END  OF  TOGGLE -->
+
+
+
+
+
+    <!--  PRELOADER ( contact.html ) -->
+    <script>
+        const preloader = document.querySelector(".preloader");
+        if (preloader) {
+            window.addEventListener("load", function() {
+                preloader.classList.add("hide-preloader");
+            });
+        }
+    </script>
+    <!--  END OF  PRELOADER  -->
+
+
+
+
+
+
+    <!-- footer date script-->
+    <script>
+        const date = document.getElementById("date");
+        window.addEventListener('DOMContentLoaded', () => {
+            footerDate();
+        })
+
+        const footerDate = () => {
+            date.innerHTML = new Date().getFullYear();
+        }
+    </script>
+    <!-- end of footer date script-->
+
+
+
+
+    <!-- FORM VALIDATION && SEND DATA TO DATABASE -->
+    <script>
+        $("#contact-form").on('submit', function(e) {
+            e.preventDefault(); // to prevent default page reloading
+            var dataString = $(this).serialize(); // to get the form data
+
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+            // Show input error message
+            function ShowError(input, message) {
+                const formControl = input.parentElement;
+                formControl.className = 'form-group-row error';
+                const small = formControl.querySelector('small');
+                small.innerText = message;
+            }
+            //Show input success
+            function ShowSuccess(input) {
+                const formControl = input.parentElement;
+                formControl.classList.add('success');
+                const small = formControl.querySelector('small');
+                small.style.display = "none";
+            }
+
+            //check email
+            function CheckEmail(input) {
+                const char =
+                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (char.test(input.value.trim())) {
+                    ShowSuccess(input);
+                } else {
+                    ShowError(input, 'Email is not valid');
+                }
+            }
+
+            function CheckMessage(input) {
+
+                if (input.value.trim() === "") {
+                    input.classList.add('error');
+                    ShowError(input, `${getFieldName(input)} is required`);
+                } else {
+                    input.classList.add('success');
+                    ShowSuccess(input);
+                }
+            };
+
+
+            function CheckLenght(input, min) {
+                if (input.value.length < min) {
+                    ShowError(input, `${getFieldName(input)} must be at least ${min} character`);
+                } else {
+                    ShowSuccess(input);
+                }
+            }
+
+
+            function getFieldName(input) {
+                return input.id.charAt(0).toUpperCase() + input.id.slice(1)
+            }
+
+
+            if (name.value == '' || email.value == '' || subject.value == '' || message.value == '') {
+                CheckLenght(name, 1);
+                CheckLenght(subject, 1);
+                CheckEmail(email);
+                CheckMessage(message);
+                alert('Please fill properly all the fields');
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "newMessage.php",
+                    data: dataString,
+                    success: function(data) {
+                        alert('Το μήνυμα στάλθηκε επιτυχώς!');
+                        ShowSuccess(name);
+                        ShowSuccess(email);
+                        ShowSuccess(subject);
+                        CheckMessage(message);
+                        $('#contact-form')[0].reset(); // to reset form data
+                    }
+                })
+            }
+        });
+    </script>
+    <!-- end of jquery script -->
+
+
+    <!------ FIXED NAV & TOP ARROW ON SCROLL (all pages)   -->
+
+    <script>
+        const sectionCenter = document.querySelector(".section-center");
+        const navbar = document.getElementById("nav");
+        const topLink = document.querySelector(".top-link");
+        const containerHeader = document.querySelector(".container-header");
+
+        window.addEventListener("scroll", function() {
+            fixedNavArrow();
+        });
+
+        const fixedNavArrow = () => {
+            const scrollHeight = window.pageYOffset;
+            const navHeight = navbar.getBoundingClientRect().height;
+            const contImg = containerHeader.getBoundingClientRect().height;
+            const TotalWantedHeight = navHeight + contImg;
+
+            if (scrollHeight > TotalWantedHeight) {
+                navbar.classList.add("fixed-nav");
+            } else {
+                navbar.classList.remove("fixed-nav");
+            }
+            // setup back to top link
+
+            if (scrollHeight > TotalWantedHeight) {
+                topLink.classList.add("show-top-link");
+            } else {
+                topLink.classList.remove("show-top-link");
+            }
+            // set margin for section-center so navbar dont appear above content
+            if (topLink.classList.contains("show-top-link")) {
+                if (window.innerWidth > 992) sectionCenter.style.marginTop = "7rem";
+                else if ((window.innerWidth > 768) & (window.innerWidth < 992)) {
+                    sectionCenter.style.marginTop = "21rem";
+                } else if (window.innerWidth < 768) {
+                    sectionCenter.style.marginTop = "8rem";
+                }
+            } else {
+                sectionCenter.style.marginTop = "0";
+            }
+        }
+    </script>
+    <!-- END OF FIXED NAV & TOP ARROW ON SCROLL -->
+
+</body>
+
+</html>

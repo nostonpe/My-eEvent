@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My-eEvent</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- jquery-->
+    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
+</head>
+
+<body>
+    <header id="home">
+        <!-- NAVBAR-->
+        <nav id="nav">
+            <div class="nav-center">
+                <!-- nav header-->
+                <div class="nav-header">
+                    <h2>My-eEvent</h2>
+                    <button class="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <!-- links -->
+                <ul class="links">
+                    <!-- single link  -->
+
+                    <li>
+                        <a href="index.html"><i class="fas fa-home fa-sm fa-nav"></i>Αρχική</a>
+                    </li>
+                    <li>
+                        <!--  end of single link  -->
+                        <a href="about.html"><i class="fas fa-book-open fa-sm fa-nav"></i>Η εταιρεία μας</a>
+                    </li>
+                    <li>
+                        <a href="calcCost.html"><i class="fas fa-calculator fa-sm fa-nav"></i>υπολογισμός κόστους</a>
+                    </li>
+                    <li>
+                        <a href="contact.html"><i class="fas fa-inbox fa-sm fa-nav"></i>επικοινωνία</a>
+                    </li>
+                    <li>
+                        <a href="newsletterSignUp.html"><i class="fas fa-user-plus fa-sm fa-nav"></i>Εγγραφή στο
+                            newsLetter</a>
+                    </li>
+
+
+                </ul>
+                <!-- social media -->
+                <ul class="social-icons">
+                    <!-- single social media icon  -->
+
+                    <li>
+                        <a href="https://www.facebook.com">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <!--  end of single social media icon  -->
+                    <li>
+                        <a href="https://www.twitter.com">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.sketch.com">
+                            <i class="fab fa-sketch"></i>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END OF NAVBAR -->
+    <!-- CONTAINER  -->
+    <section class="container">
+        <div class="container-header">
+            <img src="./images/main.jpeg" alt="Main Image" class="main-img">
+        </div>
+
+        <section class="section section-center">
+            <!-- NEWSLETTER SIGN UP -->
+            <article class="section newsletter-info">
+                <h3 class="section-titles">Newsletter</h3>
+                <div class="main-underline"></div>
+                <p>Συμπληρώστε την παρακάτω φόρμα με τα στοιχεία σας για να εγγραφείτε στο newsLetter !</p>
+            </article>
+
+            <!-- form container -->
+            <article class="section newsletter-form-container">
+                <form id="newsletter-form" action="newUser.php" method="post">
+                    <label for="username" class="newsletter-form-labels">Username: </label>
+                    <input type="text" class="newsletter-form-inpts" name="username" id="username" placeholder="Username" required>
+                    <label for="username" class="newsletter-form-labels">όνομα: </label>
+                    <input type="text" class="newsletter-form-inpts" name="name" id="name" placeholder="όνομα" required>
+                    <label for="Email" class="newsletter-form-labels">Email: </label>
+                    <input type="email" class="newsletter-form-inpts" name="email" id="email" placeholder="email" required>
+
+                    <input type="submit" class="btn" id="signUp-btn" value="Εγγραφή">
+
+                </form>
+                </div>
+            </article>
+            <!-- end of form container -->
+
+            <!-- END OF NEWSLETTER SIGN UP-->
+
+        </section>
+    </section>
+    <!-- END OF CONTAINER-->
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info-newsletter">
+                <h3>Χρήστες newsletter</h3>
+                <a href="newsletterUsersPage.html" class="footerBtn" name="submit" s target="_blank">Πατήστε εδώ για να οδηγηθείτε σε
+                    ειδική σελίδα προβολής όλων των χρηστών newsletter</a>
+            </div>
+
+            <div class="footer-info-copyright">
+                <p>e14154 &copy; <span id="date"></span>. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!-- END OF FOOTER-->
+    <a class="scroll-link top-link" href="#home">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+
+
+
+
+    <!-- jquery redirect to same page and succeed alert script-->
+    <script>
+        $("#newsletter-form").on('submit', function(e) {
+            e.preventDefault(); // to prevent default page reloading
+            var dataString = $(this).serialize(); // to get the form data
+
+            $.ajax({
+                type: "POST",
+                url: "newUser.php",
+                data: dataString,
+                success: function(data) {
+                    $('#newsletter-form')[0].reset(); // to reset form data
+                }
+            }).done(function(data) {
+                setTimeout(function() {
+                    alert("Εγγραφείκατε επιτυχώς στο newsLetter μας! ");
+                }, 500);
+            });
+
+        });
+    </script>
+    <!-- end of jquery script -->
+
+
+
+
+
+
+    <!--  TOGGLE    ( all pages )   -->
+    <script>
+        const toggleBtn = document.querySelector(".nav-toggle");
+        toggleBtn.addEventListener("click", () => {
+            navToggle();
+        });
+
+        function navToggle() {
+            const links = document.querySelector(".links");
+            links.classList.toggle("show-links");
+        }
+    </script>
+    <!--   END  OF  TOGGLE -->
+
+
+
+
+
+
+    <!-- footer date script-->
+    <script>
+        const date = document.getElementById("date");
+        window.addEventListener('DOMContentLoaded', () => {
+            footerDate();
+        })
+
+        const footerDate = () => {
+            date.innerHTML = new Date().getFullYear();
+        }
+    </script>
+    <!-- end of footer date script-->
+
+
+
+
+    <!------ FIXED NAV & TOP ARROW ON SCROLL (all pages)   -->
+
+    <script>
+        const sectionCenter = document.querySelector(".section-center");
+        const navbar = document.getElementById("nav");
+        const topLink = document.querySelector(".top-link");
+        const containerHeader = document.querySelector(".container-header");
+
+        window.addEventListener("scroll", function() {
+            fixedNavArrow();
+        });
+
+        const fixedNavArrow = () => {
+            const scrollHeight = window.pageYOffset;
+            const navHeight = navbar.getBoundingClientRect().height;
+            const contImg = containerHeader.getBoundingClientRect().height;
+            const TotalWantedHeight = navHeight + contImg;
+
+            if (scrollHeight > TotalWantedHeight) {
+                navbar.classList.add("fixed-nav");
+            } else {
+                navbar.classList.remove("fixed-nav");
+            }
+            // setup back to top link
+
+            if (scrollHeight > TotalWantedHeight) {
+                topLink.classList.add("show-top-link");
+            } else {
+                topLink.classList.remove("show-top-link");
+            }
+            // set margin for section-center so navbar dont appear above content
+            if (topLink.classList.contains("show-top-link")) {
+                if (window.innerWidth > 992) sectionCenter.style.marginTop = "7rem";
+                else if ((window.innerWidth > 768) & (window.innerWidth < 992)) {
+                    sectionCenter.style.marginTop = "21rem";
+                } else if (window.innerWidth < 768) {
+                    sectionCenter.style.marginTop = "8rem";
+                }
+            } else {
+                sectionCenter.style.marginTop = "0";
+            }
+        }
+    </script>
+    <!-- END OF FIXED NAV & TOP ARROW ON SCROLL -->
+
+
+</body>
+
+</html>
